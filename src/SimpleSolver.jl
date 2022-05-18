@@ -3,13 +3,15 @@ using NLsolve
 
 export simple_solve
 
+const DEFAULT_TOL = 1e-8
+
 """ 
     simple_solve(f, x0)
     simple_solve(f, df, x0)
 Solve the equation `f(x)==0` in one real variable. Here, `x0` is an initial guess
 and `df` is the derivative of `f`.
 """
-function simple_solve(f::Function, x0::Real)
+function simple_solve(f::Function, x0::Real)::Real
     x = [Float64(x0)]
     y = [1.0]
 
@@ -22,7 +24,7 @@ function simple_solve(f::Function, x0::Real)
 end
 
 
-function simple_solve(f::Function, df::Function, x0::Real)
+function simple_solve(f::Function, df::Function, x0::Real)::Real
     x = [Float64(x0)]
     y = [1.0]
     dy = [1.0]
@@ -40,5 +42,6 @@ function simple_solve(f::Function, df::Function, x0::Real)
 end
 
 include("bisection.jl")
+include("newton.jl")
 
 end # module

@@ -47,7 +47,7 @@ NaN
 ```
 
 
-## Solving equations with `bisection_solve`
+## Solving equations using `bisection_solve`
 
 The function `bisection_solve` solves the equation `f(x) = 0` on an interval `[a,b]` where
 `f(a) * f(b) <= 0`. 
@@ -75,3 +75,45 @@ An error is generated if `f(a)` and `f(b)` have the same sign:
 julia> bisection_solve(cos,0,1)
 ERROR: Initial values 0 and 1 yield function values of the same sign
 ```
+
+
+## Solving equations using `newton_solve`
+
+The `newton_solve` function solves equations of the form `f(x) = 0` using Newton's method.
+The syntax is `newton_solver(f, df, x0)` where `df` is the derivative of `f` and `x0` is
+an initial guess. It may also be invoked as 
+`newton_solver(f, df, x0, tol)`.
+
+This method allows complex arguments.
+```
+julia> f(x) = x^2 + 2;
+
+julia> df(x) = 2x;
+
+julia> z = newton_solve(f, df, 2+im)
+7.204091011552923e-13 + 1.4142135623765002im   # essentially 0 + sqrt(2)*im
+```
+
+
+# Speed Comparison
+
+The file `test/speed_test.jl`  compares the speeds of the various methods. 
+In all cases, we seek a solution to the equation `cos(x) = x` which
+is known to lie between `0` and `1`.
+```
+[ Info: Speed test of the SimpleSolver methods
+simple_solve(f,1)         2.921 μs (54 allocations: 3.16 KiB)
+simple_solve(f,df,1)      2.380 μs (49 allocations: 2.73 KiB)
+bisection_solve(f,0,1)    484.451 ns (1 allocation: 16 bytes)
+newton_solve(f,df,1)      156.034 ns (1 allocation: 16 bytes)
+[ Info: Test complete
+```
+
+The pros and cons are as follows:
++ `simple_solve` does not require a derivate and needs only a single starting value,
+but is the slowest.
++ `bisection_solve` does not require a derivative but needs               two 
+starting values that yield opposite signs.
++ `newton_solve` requires a derivative but is the fastest.
+
+

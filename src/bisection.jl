@@ -3,7 +3,7 @@ export bisection_solve
     bisection_solve(f::Function, a::Real, b::Real, tol::Real=1e-8)
 Solve the equation `f(x)=0` in the interval `[a,b]`. We require `f(a)*f(b) <= 0`.
 """
-function bisection_solve(f::Function, a::Real, b::Real, tol::Real = 1e-8)
+function bisection_solve(f::Function, a::Real, b::Real, tol::Real = DEFAULT_TOL)::Real
     if tol <= 0
         error("Tolerance must be positive")
     end
