@@ -112,8 +112,8 @@ newton_solve(f,df,1)      156.034 ns (1 allocation: 16 bytes)
 The pros and cons are as follows:
 + `simple_solve` does not require a derivate and needs only a single starting value,
 but is the slowest.
-+ `bisection_solve` does not require a derivative but needs               two 
++ `bisection_solve` does not require a derivative, but needs two 
 starting values that yield opposite signs.
-+ `newton_solve` requires a derivative but is the fastest.
++ `newton_solve` requires a derivative, but is the fastest.
 
 
