@@ -39,4 +39,6 @@ function simple_solve(f::Function, df::Function, x0::Real)
     return (t.zero)[1]
 end
 
+include("bisection.jl")
+
 end # module

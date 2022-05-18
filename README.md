@@ -3,9 +3,9 @@
 This module provides an easy way to solve equations in a single real variable. 
 It relies on [NLsolve](https://github.com/JuliaNLSolvers/NLsolve.jl).
 
-## Solving equations
+## Solving equations using `simple_solve`
 
-Use the function `simple_solve` to solve equations of the form `f(x) = 0`. The simplest
+The function `simple_solve` is used to solve equations of the form `f(x) = 0`. The simplest
 form is `simple_solve(f,x0)` where `x0` is an initial guess for the solution. 
 ```julia
 julia> simple_solve(cos,1)
@@ -47,4 +47,4 @@ NaN
 ```
 
 
-
+## Bisection method
