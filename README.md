@@ -47,7 +47,7 @@ NaN
 ```
 
 
-## Bisection method
+## Solving equations with `bisection_solve`
 
 The function `bisection_solve` solves the equation `f(x) = 0` on an interval `[a,b]` where
 `f(a) * f(b) <= 0`. 
@@ -64,6 +64,10 @@ julia> bisection_solve(cos,0,2,1e-10)
 julia> pi/2
 1.570796326794896
 ```
+
+`bisection_solve` uses the bisection method and does not rely on `NLsolve`. 
+It tends to be faster than `simple_solve`, but requires two starting values
+whose function values have opposite sign.
 
 ### Problems
 An error is generated if `f(a)` and `f(b)` have the same sign:
