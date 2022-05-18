@@ -1,0 +1,7 @@
+name = "SimpleSolver"
+uuid = "e08c9474-b183-4570-a99c-acafe88f58d1"
+authors = ["Ed Scheinerman <ers@jhu.edu>"]
+version = "0.0.1"
+
+[deps]
+NLsolve = "2774e3e8-f4cf-5e23-947b-6d7e65073b56"
