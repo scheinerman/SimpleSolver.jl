@@ -4,6 +4,10 @@ export bisection_solve
 Solve the equation `f(x)=0` in the interval `[a,b]`. We require `f(a)*f(b) <= 0`.
 """
 function bisection_solve(f::Function, a::Real, b::Real, tol::Real=1e-8)
+    if tol <= 0
+        error("Tolerance must be positive")
+    end
+
     fa = f(a)
     fb = f(b)
     if abs(fa) <= tol
