@@ -80,9 +80,8 @@ ERROR: Initial values 0 and 1 yield function values of the same sign
 ## Solving equations using `newton_solve`
 
 The `newton_solve` function solves equations of the form `f(x) = 0` using Newton's method.
-The syntax is `newton_solver(f, df, x0)` where `df` is the derivative of `f` and `x0` is
-an initial guess. It may also be invoked as 
-`newton_solver(f, df, x0, tol)`.
+The syntax is `newton_solve(f, df, x0)` where `df` is the derivative of `f` and `x0` is
+an initial guess. It may also be invoked as  `newton_solve(f, df, x0, tol)`.
 
 This method allows complex arguments.
 ```
